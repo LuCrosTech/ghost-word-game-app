@@ -6,66 +6,58 @@ body {
     margin: 0;
 }
 
-form {
-    max-width: 30em;
-    margin: 4em auto;
-    position: relative;
-    background: #f4f4f4;
-    padding: 2em 3em;
-    overflow: hidden;
+.content1 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
 }
 
-form h1 {
-    font-family: "Raleway";
-    color: #F97300;
+ul {
+    font-size: 0;
 }
 
-form input[type=text]::placeholder {
-    font-family: "Raleway";
-    color: #666;
+ul#letters li {
+    font-size: 94px;
+    display: inline-block;
 }
 
-form .data {
-    margin-top: 1em;
+.blinking {
+    animation: blinkingText 0.8s infinite;
 }
 
-form .data li {
-    background: #fff;
-    border-left: 4px solid #F97300;
-    padding: 1em;
-    margin: 1em auto;
-    color: #666;
-    font-family: "Raleway";
+.playing {
+    border: 5px solid #0a0;
+    padding: 20px;
 }
 
-form .data li i {
-    float: right;
-    color: #888;
-    cursor: pointer;
+.not_playing {
+    border: 5px solid #fff;
+    padding: 20px;
 }
 
-form .input-group-text {
-    background: #F97300;
-    border-radius: 50%;
-    width: 5em;
-    height: 5em;
-    padding: 1em 23px;
-    color: #fff;
-    position: absolute;
-    right: 13px;
-    top: 68px;
-    cursor: pointer;
+.winner {
+    border: 15px dotted blue;
+    padding: 20px;
 }
 
-form .input-group-text i {
-    font-size: 2em;
+.ghost {
+    border: 15px dotted yellow;
+    padding: 20px;
 }
 
-form .form-control {
-    height: 3em;
-    font-family: "Raleway";
-}
-
-form .form-control:focus {
-    box-shadow: 0;
+@keyframes blinkingText {
+    0% {
+        color: #000;
+    }
+    49% {
+        color: transparent;
+    }
+    50% {
+        color: transparent;
+    }
+    99% {
+        color: transparent;
+    }
+    100% {
+        color: #000;
+    }
 }

@@ -1,17 +1,62 @@
+<mat-toolbar color="primary">
+    The Ghost Word Game
+</mat-toolbar>
+
 <div class="container">
-    <form #todoForm="ngForm" (submit)="todoSubmit(todoForm.value); todoForm.resetForm()">
-        <div class="form-group">
-            <h1 class="text-center ">Todo App</h1>
-            <div class="input-group-prepend">
-                <input type="text" #todo class="form-control" placeholder="Add Todo" name="todo" ngModel>
-                <span class="input-group-text" (click)="addTodo(todo.value)">
-          <i class="material-icons">add</i></span>
-            </div>
-        </div>
-        <div class="data">
-            <ul class="list-unstyled">
-                <li [@moveInLeft] *ngFor="let todo of todoArray">{{todo}} <i (click)="deleteItem(todo)" class="material-icons">delete</i></li>
-            </ul>
-        </div>
-    </form>
+    <div fxLayout="row" fxLayoutGap="12px" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap.xs="0">
+        <mat-card fxFlex="50%">
+            <mat-card-content [ngClass]="{'playing': user_playing(), 'not_playing':!user_playing(), 'winner':user_winner(), 'ghost': user_ghost() }">
+                <div class="content1">
+                    <h2> You </h2>
+                    <button mat-fab color="primary" class="score">{{ scores[0] }}</button>
+                </div>
+                <div fxLayoutGap="12px" fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap.xs="0">
+                    <div><strong>Status</strong></div>
+                    <div id="status_you">{{status_you}}</div>
+                </div>
+                <div>
+                    <div id="user_entered_letters">{{ user_entered_letters }} <span id="user_prompt" [class.blinking]="user_playing()">_</span></div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <!-- Computer -->
+        <mat-card fxFlex="50%">
+            <mat-card-content [ngClass]="{'playing': computer_playing(), 'not_playing':!computer_playing(), 'winner':computer_winner(), 'ghost': computer_ghost() }">
+                <div class="content1">
+                    <h2> Computer </h2>
+                    <button mat-fab color="accent" class="score">{{ scores[1] }}</button>
+                </div>
+                <div fxLayoutGap="12px" fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap.xs="0">
+                    <div><strong>Status</strong></div>
+                    <div id="status_computer">{{status_computer}}</div>
+                </div>
+                <div>
+                    <div id="computer_entered_letters">{{ computer_entered_letters }} <span id="computer_prompt" [class.blinking]="computer_playing()">_</span></div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div fxLayout="row" fxLayoutGap="12px" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap.xs="0" style="margin-top: 20px;">
+        <mat-card fxFlex="100%">
+            <mat-card-content>
+                <div class="content2">
+                    <div class="content1">
+                        <h2> The Word </h2>
+                        <div><strong>Game Status:</strong>
+                            <div id="game_status">{{game_status}}</div>
+                        </div>
+                    </div>
+                    <ul id="letters">
+                        <li *ngFor="let letter of letters">{{letter}}</li>
+                        <li *ngIf="not_end()" class="blinking">_ </li>
+                        <li *ngIf="!not_end()">.</li>
+                    </ul>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<div class="container" style="margin-top:20px;">
+    <button [disabled]="game_status!=='End'" (click)="reset()" mat-raised-button color="primary">New Game</button> &nbsp;
+    <button (click)="reload()" mat-raised-button color="white">Reload</button>
 </div>

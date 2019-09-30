@@ -1,3 +1,25 @@
+# The Ghost Word Game App
+By Luis M Crosby R.
+
+To run this app:
+1. Please have the ghostwordapi app running at localhost:8083.
+2. Run this angular app with $ng serve
+3. Enjoy
+
+Note:
+A minimum of 3 letters has been configured for the evaluation to happen,
+because there are some valid words with just 1 letter in the dictionary, like q, e, et al,
+and this would not be a fun game if it ended so fast.
+
+The computer player is not provided with any intelligence at this point.
+It will only provide random letters.
+For some intelligence, it would me feasible to implement with a local database to query and some tries
+allowed for access.
+
+Luis M Crosby Reategui.
+30SET2019
+
+
 # GhostWordGameApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
@@ -26,6 +48,3 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## Angular samples:
-
-https://www.freecodecamp.org/news/learn-how-to-create-your-first-angular-app-in-20-min-146201d9b5a7/
