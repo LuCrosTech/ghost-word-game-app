@@ -18,7 +18,7 @@
                     <div id="status_you">{{status_you}}</div>
                 </div>
                 <div>
-                    <div id="user_entered_letters">{{ user_entered_letters }} <span id="user_prompt" [class.blinking]="user_playing()">_</span></div>
+                    <div id="user_entered_letters" style="display: inline-flex;">{{ user_entered_letters }}<input id="content-mobile" *ngIf="not_end() && user_playing()" type="text" size="1" maxlength="1" onchange="if(this.value !== '') {this.value=''}" autofocus /> <span id="user_prompt" [class.blinking]="user_playing()">_</span></div>
                 </div>
             </mat-card-content>
         </mat-card>

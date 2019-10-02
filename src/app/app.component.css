@@ -44,6 +44,27 @@ ul#letters li {
     padding: 20px;
 }
 
+input[type="text"] {
+    border: 0;
+}
+
+#content-desktop {
+    display: block;
+}
+
+#content-mobile {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    #content-desktop {
+        display: none;
+    }
+    #content-mobile {
+        display: block;
+    }
+}
+
 @keyframes blinkingText {
     0% {
         color: #000;

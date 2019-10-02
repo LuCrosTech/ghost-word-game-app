@@ -90,7 +90,6 @@ export class AppComponent {
 
   tell_word_response(player: string, word: string): any {
     this.http.get('https://ghostwordapi.herokuapp.com/tell/' + word.toLowerCase()).subscribe((res: string) => {
-
       console.log(res);
       let wr = JSON.parse(JSON.stringify(res));
 
