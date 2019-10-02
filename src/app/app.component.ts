@@ -89,7 +89,8 @@ export class AppComponent {
   };
 
   tell_word_response(player: string, word: string): any {
-    this.http.get('http://localhost:8083/tell/' + word.toLowerCase()).subscribe((res: string) => {
+    this.http.get('https://ghostwordapi.herokuapp.com/tell/' + word.toLowerCase()).subscribe((res: string) => {
+
       console.log(res);
       let wr = JSON.parse(JSON.stringify(res));
 
@@ -109,12 +110,12 @@ export class AppComponent {
       } else if (!wr.startsWith) {
         this.game_status = "End";
         if (player === "user") {
-          this.scores[0] = this.scores[0] + 1;
+          this.scores[1] = this.scores[1] + 1;
           this.winner = "computer";
           this.status_computer = "Winner";
           this.status_you = "Challenged! - Ghost!"
         } else if (player === "computer") {
-          this.scores[1] = this.scores[1] + 1;
+          this.scores[0] = this.scores[0] + 1;
           this.winner = "user";
           this.status_computer = "Challenged! - Ghost!";
           this.status_you = "Winner"
@@ -132,8 +133,7 @@ export class AppComponent {
     },
       error => {
         console.log("REST App is not UP");
-        this.game_status = "Rest APP is not accesible. Please Try again."
-        this.reset();
+        this.game_status = "Rest APP is not available. Please Reload."
       });
   }
 
@@ -167,6 +167,9 @@ export class AppComponent {
     this.computer_entered_letters = "";
     this.playing = "user";
     this.winner = "";
+    this.game_status = "Your turn";
+    this.status_computer = "Wait";
+    this.status_you = "Choose a letter";
   }
 
   reload(): void {
